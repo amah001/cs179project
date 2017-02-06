@@ -2,13 +2,18 @@ import tweepy
 import time, sys, json
 import os, errno
 
-# this information should probably be encrypted
-access_token = ""
-access_token_secret = ""
-consumer_key = ""
-consumer_secret = ""
+#opens keys
+file = open("key.txt", "r")
+key_lines = file.readlines()
+file.close()
 
-hundredMB = 1024 * 1000 * 100
+# accesses keys
+access_token=key_lines[0].rstrip()
+access_token_secret=key_lines[1].rstrip()
+consumer_key=key_lines[2].rstrip()
+consumer_secret=key_lines[3].rstrip()
+
+hundredMB=1024 * 1000 * 100
 
 # modified version of the basic StreamListener from Tweepy
 class JSONStream(tweepy.StreamListener):
